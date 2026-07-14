@@ -23,6 +23,8 @@ function transformStateWithClones(state, actions) {
       case 'clear':
         currentState = clear();
         break;
+      default:
+        break;
     }
 
     stateHistory.push(currentState);
@@ -36,13 +38,13 @@ function addProperties(state, extraData) {
 }
 
 function removeProperties(state, keysToRemove) {
-  const newState = { ...state };
+  const stateCopy = { ...state };
 
   for (const key of keysToRemove) {
-    delete newState[key];
+    delete stateCopy[key];
   }
 
-  return newState;
+  return stateCopy;
 }
 
 function clear() {
